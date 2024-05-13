@@ -1,0 +1,16 @@
+<RollingFile name="RollingFile" fileName="logs/hippodrome.log"
+             filePattern="logs/hippodrome.%d{yyyy-MM-dd}.log">
+    <PatternLayout>
+        <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+    </PatternLayout>
+    <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+    </Policies>
+    <DefaultRolloverStrategy>
+        <Delete basePath="logs" maxDepth="1">
+            <IfFileName glob="hippodrome.*.log" />
+            <IfLastModified age="7d"/>
+        </Delete>
+    </DefaultRolloverStrategy>
+</RollingFile>
